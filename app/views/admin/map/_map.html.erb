@@ -69,7 +69,7 @@
         weatherTemps.push(<%= raw(body["main"]["temp"].to_json) %>)
         weatherStatuses.push(<%= raw(body["weather"][0]["description"].to_json)%>)
         weatherHumidities.push(<%= raw(body["main"]["humidity"].to_json) %>)
-        <% puts(i)%>
+        console.log(<%= i %>)
         map.addMarker({
             lat: locations[<%= i%>].latitude,
             lng: locations[<%= i%>].longitude,

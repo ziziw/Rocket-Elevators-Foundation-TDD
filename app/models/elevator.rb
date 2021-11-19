@@ -28,13 +28,13 @@ class Elevator < ApplicationRecord
 
 
       from = ENV['TWILIO_NUM'] # Your Twilio number
-      to = ENV['PHONE_NUM'] # Your mobile phone number
+      to = ENV['PERSONAL_NUM'] # Your mobile phone number
 
 
       @client.messages.create(
         from: from,
         to: to,
-        body: "Please Contact Branch further instrution. maintenance need Elevator#"
+        body: "Please contact your branch for further instructions. Maintenance is needed for  Elevator #"
         )
       end
     end

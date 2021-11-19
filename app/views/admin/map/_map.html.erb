@@ -57,26 +57,15 @@
     
     //add markers + infoWindow for all our building locations. Add additional info such as number of columns to the info window. add weather info to the info window. 
     <% for i in 0..locations.length() - 1 %>
-        <%random_num = rand(0..2) %>
-        <% response = Faraday.get 'https://api.openweathermap.org/data/2.5/weather' do |req|%>
-            <% req.params['APPID'] = random_api[random_num] %>
-            <% req.params['lat'] = locations[i].latitude.to_f.round(2)%> 
-            <% req.params['lon'] = locations[i].longitude.to_f.round(2)%>
-            <% req.params['units'] = 'metric' %>
-        <% end %>
-        <% %>
-        <% body = JSON.parse(response.body)%>
-        weatherTemps.push(<%= raw(body["main"]["temp"].to_json) %>)
-        weatherStatuses.push(<%= raw(body["weather"][0]["description"].to_json)%>)
-        weatherHumidities.push(<%= raw(body["main"]["humidity"].to_json) %>)
-        <% puts(i)%>
+        
+        console.log(<%= i %>)
         map.addMarker({
             lat: locations[<%= i%>].latitude,
             lng: locations[<%= i%>].longitude,
             title: locations[<%= i%>].status,
             
             infoWindow: {
-                content: "<p>Location: " + locations[<%= i%>].number_and_street + "</p>" + "<p>Number of Floors: " + nbFloors[k] + "<p>Client Name: " + clientNames[<%= i%>] +"</p><p>Number of Batteries: " + nbBatteries[<%= i%>] + "</p><p>Number of Columns: " + nbColumns[j] + "</p><p>Number of Elevators: " +  nbElevators[k] + "</p><p>Full Name of Technical Contact: " + techNames[<%= i%>] + "</p><p>Temperature Condition: " + weatherStatuses[<%= i%>] + "</p><p>Weather Temperature: " + weatherTemps[<%= i%>] + "°C" + "</p><p>Weather Humidity: " + weatherHumidities[<%= i%>] + "%"
+                content: "<p>Location: " + locations[<%= i%>].number_and_street + "</p>" + "<p>Number of Floors: " + nbFloors[k] + "<p>Client Name: " + clientNames[<%= i%>] +"</p><p>Number of Batteries: " + nbBatteries[<%= i%>] + "</p><p>Number of Columns: " + nbColumns[j] + "</p><p>Number of Elevators: " +  nbElevators[k] + "</p><p>Full Name of Technical Contact: " + techNames[<%= i%>]
             }
         });
         k += nbColumns[j]

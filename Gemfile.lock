@@ -236,6 +236,7 @@ GEM
       railties (>= 5.2, < 6.2)
       responders (>= 2, < 4)
     io-like (0.3.1)
+    io-wait (0.2.1)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -274,22 +275,22 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mysql2 (0.5.3)
+    net-http (0.2.0)
+      net-protocol
+      uri
+    net-protocol (0.1.2)
+      io-wait
+      timeout
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
     nio4r (2.5.8)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
@@ -305,7 +306,7 @@ GEM
     pg (1.2.3)
     popper_js (2.9.3)
     public_suffix (4.0.6)
-    puma (5.5.2)
+    puma (4.3.5)
       nio4r (~> 2.0)
     pundit (2.1.1)
       activesupport (>= 3.0.0)
@@ -427,6 +428,7 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    timeout (0.2.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -443,6 +445,7 @@ GEM
     unf_ext (0.0.8)
     unicode-display_width (2.1.0)
     unicode_utils (1.4.0)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (3.7.0)
@@ -463,8 +466,6 @@ GEM
       multipart-post (~> 2.0)
 
 PLATFORMS
-  -darwin-20
-  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -506,8 +507,9 @@ DEPENDENCIES
   jwt
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
+  net-http
   pg
-  puma
+  puma (= 4.3.5)
   pundit
   rails (~> 5.2.6)
   responders

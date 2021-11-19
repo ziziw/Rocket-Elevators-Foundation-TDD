@@ -16,7 +16,7 @@ gem "jquery-ui-rails"
 # Use mysql as the database for Active Record
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 # Use Puma as the app server
-gem "puma"
+gem "puma", "4.3.5"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
@@ -25,6 +25,7 @@ gem "uglifier", ">= 1.3.0"
 # gem 'mini_racer', platforms: :ruby
 # jquery
 gem "jquery-rails"
+gem 'net-http'
 # Use CoffeeScript for .coffee assets and views
 gem "coffee-rails", "~> 4.2"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -58,6 +59,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+
+  gem "capistrano", require: false
+  gem "capistrano3-puma"
+  gem "capistrano-bundler", ">= 1.1.0"
+  gem "capistrano-rails", "~> 1.4", require: false
+  gem "rvm1-capistrano3", require: false
 end
 
 group :test do
@@ -82,13 +89,6 @@ gem "pundit"
 gem "rubocop", require: false
 gem "json"
 gem "highcharts-rails"
-
-gem "capistrano", require: false
-gem "capistrano3-puma"
-gem "capistrano-bundler", ">= 1.1.0"
-gem "capistrano-rails", "~> 1.4", require: false
-gem "rvm1-capistrano3", require: false
-gem 'dropbox_api'
 
 gem "arbre"
 

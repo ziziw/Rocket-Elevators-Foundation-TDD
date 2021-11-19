@@ -36,9 +36,9 @@ class QuotesController < ApplicationController
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
-    if @quote.product_line == "Standard"
+    if @quote.product_line == "standard"
       elevator_price = 7565.00
-    elsif @quote.product_line == "Premium"
+    elsif @quote.product_line == "premium"
       elevator_price = 12345.00
     else
       elevator_price = 15400.00
@@ -48,7 +48,7 @@ class QuotesController < ApplicationController
       :subject => "#{@quote.company_name}",
       :requester => {"name": @quote.email},
       :comment => { :value => 
-        "The company #{@quote.company_name} has made a quote for a building of type #{@quote.building_type} and wants the type of service #{@quote.product_line} service. Amount of elevators is #{@quote.amount_elevators}. Price per elevator: #{elevator_price}. Installation fee is #{@quote.installation_fees}. Total price is $#{@quote.total_cost}. The company #{@quote.company_name} can be contacted at #{@quote.email}"},
+        "The company #{@quote.company_name} has made a quote for a building of type #{@quote.building_type} and wants the type of service #{@quote.product_line} service. Amount of elevators is #{@quote.amount_elevators}. Price per elevator: $#{elevator_price}. Installation fee is #{@quote.installation_fees}. Total price is #{@quote.total_cost}. The company #{@quote.company_name} can be contacted at #{@quote.email}"},
       :type => "task",  
       :priority => "urgent")
   end

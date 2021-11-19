@@ -88,6 +88,7 @@ gem "capistrano3-puma"
 gem "capistrano-bundler", ">= 1.1.0"
 gem "capistrano-rails", "~> 1.4", require: false
 gem "rvm1-capistrano3", require: false
+gem 'dropbox_api'
 
 gem "arbre"
 

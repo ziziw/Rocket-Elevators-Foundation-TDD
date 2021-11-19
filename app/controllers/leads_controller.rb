@@ -23,6 +23,10 @@ class LeadsController < ApplicationController
   # POST /leads or /leads.json
   def create
     @lead = Lead.new(lead_params)
+    unless verify_recaptcha?(params[:recaptcha_token], 'lead')
+      flash.now[:error] = t('recaptcha.errors.verification_failed')
+      return render 'home/index'
+    end
 
     respond_to do |format|
       if @lead.save

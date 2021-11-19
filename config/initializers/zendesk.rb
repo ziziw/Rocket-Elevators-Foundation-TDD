@@ -1,21 +1,21 @@
-require 'zendesk_api'
+# require 'zendesk_api'
 
-def initialize
+# def initialize
 
-    @client = ZendeskAPI::Client.new do |config|
-    # Mandatory:
+#     @client = ZendeskAPI::Client.new do |config|
+#     # Mandatory:
 
-        config.url = ENV['ZENDESK_API_URL'] # e.g. https://yoursubdomain.zendesk.com/api/v2
+#         config.url = ENV['ZENDESK_API_URL'] # e.g. https://yoursubdomain.zendesk.com/api/v2
 
-        # Basic / Token Authentication
-        config.username = ENV['ZENDESK_API_USERNAME']
-        config.password = ENV['ZENDESK_API_PASSWORD']
-        # Choose one of the following depending on your authentication choice
-        config.token = ENV['ZENDESK_API_TOKEN']
+#         # Basic / Token Authentication
+#         config.username = ENV['ZENDESK_API_USERNAME']
+#         config.password = ENV['ZENDESK_API_PASSWORD']
+#         # Choose one of the following depending on your authentication choice
+#         config.token = ENV['ZENDESK_API_TOKEN']
         
-        require 'logger'
-        config.logger = Logger.new(STDOUT)
-end
+#         require 'logger'
+#         config.logger = Logger.new(STDOUT)
+# end
 
 #   # OAuth Authentication
 #   config.access_token = "your OAuth access token"
@@ -53,4 +53,4 @@ end
 
 #   # Error codes when the request will be automatically retried. Defaults to 429, 503
 #   config.retry_codes = [ 429 ]
-end
+# end

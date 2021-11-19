@@ -9,6 +9,7 @@
      <script>var plugin_path = "assets/plugins/";</script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :recaptcha_js %>
   </head>
 
   <body>
@@ -26,7 +27,10 @@
 					// and other stuff...
 				}
 				})
+        
 		</script>
+
     
   </body>
+  
 </html>

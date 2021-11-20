@@ -17,7 +17,7 @@ def initialize
         config.logger = Logger.new(STDOUT)
 end
 
-#   # OAuth Authentication
+  # OAuth Authentication
 #   config.access_token = "your OAuth access token"
 
 #   # Optional:

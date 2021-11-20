@@ -48,10 +48,12 @@
     var marker, i;
     //for loop to run weather api. Random api member because free tier limits search per minute. Push to js arrays to put into infoWindow.
     //add markers + infoWindow for all our building locations. Add additional info such as number of columns to the info window. add weather info to the info window. 
+
     for (i = 0; i < locations.length; i++) {  
         marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i].latitude, locations[i].longitude),
         map: map
+
         });
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {

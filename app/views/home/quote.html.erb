@@ -1,4 +1,7 @@
 <hr class="m-0" />
+            <%= content_for :recaptcha_js do %>
+  				<%= include_recaptcha_js %>
+			<% end %>
             <form id="myForm" method = "post" action = "/create_quotes">
                 <div class="form-group" id="full-name-id">
                     <label>Full Name*</label>
@@ -97,6 +100,7 @@
                     </div>
                         <input type="submit" class="btn btn-primary">
                 </div>
+                <%= recaptcha_execute('quote') %>
                  
                 
             </form>

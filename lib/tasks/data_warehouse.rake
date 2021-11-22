@@ -89,9 +89,9 @@ namespace :wh do
             elevator_id serial NULL,
             start_intervention varchar NOT NULL,
             end_intervention varchar NULL
-            result varchar NULL,
-            report varchar NULL,
-            status varchar NULL,
+            result varchar NOT NULL,
+            report varchar NOT NULL,
+            status varchar NOT NULL,
             CONSTRAINT fact_intervention_pk PRIMARY KEY (intervention_id))")
             print "CREATE FACT INTERVENTION TABLE: "
             puts "\e[0;32mOK\e[0m"

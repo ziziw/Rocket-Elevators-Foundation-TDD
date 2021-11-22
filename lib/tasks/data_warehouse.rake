@@ -39,9 +39,9 @@ namespace :wh do
         task make_table: :environment do
             connection.exec("DROP TABLE IF EXISTS public.fact_quotes")
             connection.exec("CREATE TABLE public.fact_quotes (creation_date date NULL,
-            company_name varchar NULL,
-            email varchar NULL,
-            nb_elevator int4 NULL,
+            company_name varchar ,
+            email varchar ,
+            nb_elevator int4 ,
             quote_id serial NOT NULL,
             CONSTRAINT fact_quotes_pk PRIMARY KEY (quote_id))")
             print "CREATE FACT QUOTE TABLE: "
@@ -49,9 +49,9 @@ namespace :wh do
 
             connection.exec("DROP TABLE IF EXISTS public.fact_contacts")
             connection.exec("CREATE TABLE public.fact_contacts (creation_date date NULL,
-            company_name varchar NULL,
-            email varchar NULL,
-            project_name varchar NULL,
+            company_name varchar ,
+            email varchar ,
+            project_name varchar ,
             contact_id serial NOT NULL,
             CONSTRAINT fact_contact_pk PRIMARY KEY (contact_id))")
             print "CREATE FACT CONTACT TABLE: "
@@ -60,7 +60,7 @@ namespace :wh do
 
             connection.exec("DROP TABLE IF EXISTS public.fact_elevators")
             connection.exec("CREATE TABLE public.fact_elevators (date_of_commissionig date NULL,
-            building_city varchar NULL,
+            building_city varchar ,
             customer_id serial NOT NULL,
             building_id serial NOT NULL,
             serial_number serial NOT NULL,
@@ -72,11 +72,11 @@ namespace :wh do
 
             connection.exec("DROP TABLE IF EXISTS public.dim_customers")
             connection.exec("CREATE TABLE public.dim_customers (creation_date date NULL,
-            company_name varchar NULL,
-            email varchar NULL,
-            full_name varchar NULL,
-            nb_elevator int4 NULL,
-            customer_city varchar NULL)")
+            company_name varchar N,
+            email varchar ,
+            full_name varchar ,
+            nb_elevator int4 ,
+            customer_city varchar )")
             print "CREATE DIM CUSTOMER TABLE: "
             puts "\e[0;32mOK\e[0m"
 
@@ -85,11 +85,11 @@ namespace :wh do
             intervention_id serial NOT NULL,
             employee_id serial NOT NULL,
             building_id serial NOT NULL,
-            battery_id serial NULL,
-            column_id serial NULL,
-            elevator_id serial NULL,
+            battery_id serial ,
+            column_id serial ,
+            elevator_id serial ,
             start_intervention timestamp NOT NULL,
-            end_intervention timestamp NULL,
+            end_intervention timestamp ,
             result varchar NOT NULL,
             report varchar NOT NULL,
             status varchar NOT NULL,

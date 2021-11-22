@@ -88,8 +88,8 @@ namespace :wh do
             battery_id serial NULL,
             column_id serial NULL,
             elevator_id serial NULL,
-            start_intervention varchar NOT NULL,
-            end_intervention varchar NULL
+            start_intervention timestamp NOT NULL,
+            end_intervention timestamp NULL,
             result varchar NOT NULL,
             report varchar NOT NULL,
             status varchar NOT NULL,

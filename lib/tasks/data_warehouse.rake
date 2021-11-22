@@ -140,7 +140,7 @@ namespace :wh do
         end
         task intervention: :environment do
             intervention.all.each do |customer|
-                query = "insert into fact_intervention(employee_id, building_id, battery_id, column_id,elevator_id, start_intervention, end_intervention, result, report, status ) values('#{employee.id}', '#{building.id}', '#{battery.id}', '#{column.id}', '#{elevator.id}', '#{start_intervention.to_date}', '#{end_intervention.to_date}', '#{intervention.result}', '#{intervention.report}', '#{intervention.status}')"
+                query = "insert into fact_intervention(intervention_id,employee_id, building_id, battery_id, column_id,elevator_id, start_intervention, end_intervention, result, report, status ) values('#{intervention.id}', '#{employee.id}', '#{building.id}', '#{battery.id}', '#{column.id}', '#{elevator.id}', '#{start_intervention.to_date}', '#{end_intervention.to_date}', '#{intervention.result}', '#{intervention.report}', '#{intervention.status}')"
                 connection.exec(query)
             end
             puts "POPULATE FACT INTERVENTION: " + "\e[0;32mOK\e[0m"

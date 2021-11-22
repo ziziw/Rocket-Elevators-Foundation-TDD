@@ -30,6 +30,7 @@ namespace :wh do
         Rake::Task["wh:populate:contact"].invoke
         Rake::Task["wh:populate:elevator"].invoke
         Rake::Task["wh:populate:customer"].invoke
+        Rake::Task["wh:populate:intervention"].invoke
     end
 
 
@@ -78,6 +79,22 @@ namespace :wh do
             customer_city varchar NULL)")
             print "CREATE DIM CUSTOMER TABLE: "
             puts "\e[0;32mOK\e[0m"
+
+            connection.exec("DROP TABLE IF EXISTS public.fact_intervention")
+            connection.exec("CREATE TABLE public.fact_intervention (creation_date date NULL,
+            employee_id serial NOT NULL,
+            building_id serial NOT NULL,
+            battery_id serial NULL,
+            column_id serial NULL,
+            elevator_id serial NULL,
+            start_intervention varchar NOT NULL,
+            end_intervention varchar NULL
+            result varchar NULL,
+            report varchar NULL,
+            status varchar NULL,
+            CONSTRAINT fact_intervention_pk PRIMARY KEY (intervention_id))")
+            print "CREATE FACT INTERVENTION TABLE: "
+            puts "\e[0;32mOK\e[0m"
         end
 
         namespace :populate do
@@ -120,6 +137,13 @@ namespace :wh do
                 connection.exec(query)
             end
             puts "POPULATE DIM CUSTOMER: " + "\e[0;32mOK\e[0m"
+        end
+        task intervention: :environment do
+            intervention.all.each do |customer|
+                query = "insert into fact_intervention(employee_id, building_id, battery_id, column_id,elevator_id, start_intervention, end_intervention, result, report, status ) values('#{employee.id}', '#{building.id}', '#{battery.id}', '#{column.id}', '#{elevator.id}', '#{start_intervention.to_date}', '#{end_intervention.to_date}', '#{intervention.result}', '#{intervention.report}', '#{intervention.status}')"
+                connection.exec(query)
+            end
+            puts "POPULATE FACT INTERVENTION: " + "\e[0;32mOK\e[0m"
         end
     end
 end

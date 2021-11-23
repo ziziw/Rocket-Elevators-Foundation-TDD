@@ -82,7 +82,7 @@ namespace :wh do
 
             connection.exec("DROP TABLE IF EXISTS public.fact_intervention")
             connection.exec("CREATE TABLE public.fact_intervention (creation_date date NULL,
-            intervention_id int NOT NULL,
+            intervention_id serial NOT NULL,
             employee_id int NOT NULL,
             building_id int NOT NULL,
             battery_id int ,

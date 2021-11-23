@@ -91,7 +91,7 @@ namespace :wh do
             start_intervention timestamp [ (p) ] [ without time zone ] NOT NULL,
             end_intervention timestamp [ (p) ] [ without time zone ],
             result varchar NOT NULL,
-            report varchar NOT NULL,
+            report varchar ,
             status varchar NOT NULL,
             CONSTRAINT fact_intervention_pk PRIMARY KEY (intervention_id))")
             print "CREATE FACT INTERVENTION TABLE: "

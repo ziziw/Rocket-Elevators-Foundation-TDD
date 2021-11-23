@@ -1,0 +1,17 @@
+<%= form_with(model: dimcustomer, local: true) do |form| %>
+  <% if dimcustomer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dimcustomer.errors.count, "error") %> prohibited this dimcustomer from being saved:</h2>
+
+      <ul>
+      <% dimcustomer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

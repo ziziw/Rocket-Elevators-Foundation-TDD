@@ -82,8 +82,8 @@ namespace :wh do
             print "CREATE DIM CUSTOMER TABLE: "
             puts "\e[0;32mOK\e[0m"
 
-            connection.exec("DROP TABLE IF EXISTS public.fact_intervention")
-            connection.exec("CREATE TABLE public.fact_intervention (creation_date date NULL,
+            connection.exec("DROP TABLE IF EXISTS public.fact_interventions")
+            connection.exec("CREATE TABLE public.fact_interventions (creation_date date NULL,
             intervention_id serial NOT NULL,
             employee_id int NOT NULL,
             building_id int NOT NULL,
@@ -96,7 +96,7 @@ namespace :wh do
             report varchar ,
             status varchar NOT NULL,
             CONSTRAINT fact_intervention_pk PRIMARY KEY (intervention_id))")
-            print "CREATE FACT INTERVENTION TABLE: "
+            print "CREATE FACT INTERVENTIONS TABLE: "
             puts "\e[0;32mOK\e[0m"
         end
 
@@ -168,7 +168,7 @@ namespace :wh do
                     end
                     if intervention == 'building'
                         random_building_id = rand(1..178)
-                        query = "insert into fact_intervention(employee_id, building_id, start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{random_building_id}', '#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
+                        query = "insert into fact_interventions(employee_id, building_id, start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{random_building_id}', '#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
                         connection.exec(query)
                         
                     
@@ -177,7 +177,7 @@ namespace :wh do
                         random_battery_id = rand(1..battery_count)
                         battery = Battery.find(random_battery_id)
                         building_id = battery.building.id
-                        query = "insert into fact_intervention(employee_id, building_id, battery_id, start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{building_id}', '#{random_battery_id}', '#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
+                        query = "insert into fact_interventions(employee_id, building_id, battery_id, start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{building_id}', '#{random_battery_id}', '#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
                         connection.exec(query)
                         
                     elsif intervention == 'column'
@@ -186,7 +186,7 @@ namespace :wh do
                         column = Column.find(random_column_id)
                         battery_id = column.battery.id
                         building_id = column.battery.building.id
-                        query = "insert into fact_intervention(employee_id, building_id, battery_id, column_id, start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{building_id}', '#{battery_id}', '#{random_column_id}','#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
+                        query = "insert into fact_interventions(employee_id, building_id, battery_id, column_id, start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{building_id}', '#{battery_id}', '#{random_column_id}','#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
                         connection.exec(query)
                         
                     elsif intervention == 'elevator'
@@ -196,12 +196,12 @@ namespace :wh do
                         column_id = elevator.column.id
                         battery_id = elevator.column.battery.id
                         building_id = elevator.column.battery.building.id
-                        query = "insert into fact_intervention(employee_id, building_id, battery_id, column_id, elevator_id,  start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{building_id}', '#{battery_id}', '#{column_id}', '#{random_elevator_id}','#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
+                        query = "insert into fact_interventions(employee_id, building_id, battery_id, column_id, elevator_id,  start_intervention, end_intervention, result, status) values('#{random_employee_id}', '#{building_id}', '#{battery_id}', '#{column_id}', '#{random_elevator_id}','#{random_date_time_start}', '#{random_date_time_end}', '#{result}', '#{status}')"
                         connection.exec(query)
                     end
                     i += 1
                 end
-                puts "POPULATE FACT_INTERVENTION: " + "\e[0;32mOK\e[0m"
+                puts "POPULATE FACT_INTERVENTIONS: " + "\e[0;32mOK\e[0m"
             end
         end
 end

@@ -21,7 +21,7 @@ def gapm(connection, month, table)
 
 ActiveAdmin.register_page "Graphs" do
     content do
-        connection = PG::Connection.new(host:'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com',port:'5432',dbname:'jkg',user:'codeboxx',password:'Codeboxx1!')
+        connection = PG::Connection.new(host:'localhost',port:'5432',dbname:'data_warehouse',user:'longnguyen',password:'')
         first_2_question = column_chart [{name: "Contacts Requests", data: {
            "January" => gapm(connection, 1, "fact_contacts"),
             "February" => gapm(connection, 2, "fact_contacts"),

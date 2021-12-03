@@ -8,7 +8,7 @@ class InterventionsController < InheritedResources::Base
   def submit
     @cur_employee = current_user.employees[0]
     @intervention = Intervention.new(
-      author: @cur_employee,
+      author: @cur_employee.id,
       customer_id: params[:intervention][:customer_id],
       building_id: params[:intervention][:building_id],
       battery_id: params[:intervention][:battery_id],

@@ -7,8 +7,8 @@
     <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
      <script>var plugin_path = "assets/plugins/";</script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track': "reload" %>
     <%= yield :recaptcha_js %>
   </head>
 
@@ -16,7 +16,7 @@
     <%= render "layouts/header" %>
     <%= yield %>
     <%= render "layouts/footer" %>
-    <script async defer src=<%=ENV['MAPS_API']%>></script>
+    <script async defer src=<%= ENV["MAPS_API"] %>></script>
     		<script>
 			function initMap() {} // now it IS a function and it is in global
 
@@ -29,7 +29,6 @@
 				})
         
 		</script>
-
     
   </body>
   

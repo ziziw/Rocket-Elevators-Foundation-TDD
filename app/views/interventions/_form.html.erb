@@ -1,0 +1,141 @@
+<%= form_with(url: "/submit_intervention", model: intervention, local: false) do |form| %>
+  <% if intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div id="customerSetId" class="field row col-md-10 col-sm-10">
+    <%= form.label :customer, "Customer" %>
+    <%= form.collection_select(:customer_id, Customer.all, :id, :company_name, options = { include_blank: "Please select ..." }) %>
+  </div>
+  
+
+  <div id="buildingSetId" class="field row col-md-10 col-sm-10" hidden="">
+    <%= form.label :building, "Building" %>
+    <%= form.collection_select(:building_id, [], :id, :id, options = { include_blank: "Please select ..." }) %>
+  </div>
+
+  <div id="batterySetId" class="field row col-md-10 col-sm-10" hidden="">
+    <%= form.label :battery, "Battery" %>
+    <%= form.collection_select(:battery_id, [], :id, :id, options = { include_blank: "Please select ..." }) %>
+  </div>
+
+  <div id="columnSetId" class="field row col-md-10 col-sm-10" hidden="">
+    <%= form.label :column, "Column" %>
+    <%= form.collection_select(:column_id, [], :id, :id, options = { include_blank: "Please select ..." }) %>
+  </div>
+
+  <div id="elevatorSetId" class="field row col-md-10 col-sm-10" hidden="">
+    <%= form.label :elevator, "Elevator" %>
+    <%= form.collection_select(:elevator_id, [], :id, :id, options = { include_blank: "Please select ..." }) %>
+  </div>
+
+  <div class="field row col-md-10 col-sm-10">
+    <%= form.label :employee, "Employee" %>
+    <%= form.collection_select(:employee_id, Employee.all, :id, :full_name, options = { include_blank: "Please select ..." }) %>
+  </div>
+
+  <div class="field row col-md-10 col-sm-10">
+    <%= form.label :report, "Description" %>
+    <%= form.text_field :report %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script>
+$('#intervention_customer_id').change((e) => {
+    e.preventDefault();
+    console.log('entered customer_select!!!!');
+    $('#buildingSetId').removeAttr('hidden');
+    $.ajax({
+        method: 'GET',
+        dataType: 'json',
+        cache: false,
+        url: '/get_buildings/',
+        data: {customer_id: e.target.value},
+        timeout: 5000,
+        async: false,
+        success: (data) => {
+            $('#intervention_building_id').find('option').not(':first').remove();
+            for (let i = 0; i < data["buildings"].length; i++) {
+                $('#intervention_building_id').append($('<option/>', { key: data["buildings"][i].id, text: data["buildings"][i].id }));
+            }
+        },
+    });
+});
+
+$('#intervention_building_id').change((e) => {
+    e.preventDefault();
+    console.log('entered building_select!!!!');
+    $('#batterySetId').removeAttr('hidden');
+    $.ajax({
+        method: 'GET',
+        dataType: 'json',
+        cache: false,
+        url: '/get_batteries/',
+        data: {building_id: e.target.value},
+        timeout: 5000,
+        async: false,
+        success: (data) => {
+            $('#intervention_battery_id').find('option').not(':first').remove();
+            for (let i = 0; i < data["batteries"].length; i++) {
+                $('#intervention_battery_id').append($('<option/>', { key: data["batteries"][i].id, text: data["batteries"][i].id }));
+            }
+        },
+    });
+});
+
+$('#intervention_battery_id').change((e) => {
+    e.preventDefault();
+    console.log('entered battery_select!!!!');
+    $('#columnSetId').removeAttr('hidden');
+    $.ajax({
+        method: 'GET',
+        dataType: 'json',
+        cache: false,
+        url: '/get_columns/',
+        data: {battery_id: e.target.value},
+        timeout: 5000,
+        async: false,
+        success: (data) => {
+            $('#intervention_column_id').find('option').not(':first').remove();
+            for (let i = 0; i < data["columns"].length; i++) {
+                $('#intervention_column_id').append($('<option/>', { key: data["columns"][i].id, text: data["columns"][i].id }));
+            }
+        },
+    });
+});
+
+$('#intervention_column_id').change((e) => {
+    e.preventDefault();
+    console.log('entered column_select!!!!');
+    $('#elevatorSetId').removeAttr('hidden');
+    $.ajax({
+        method: 'GET',
+        dataType: 'json',
+        cache: false,
+        url: '/get_elevators/',
+        data: {column_id: e.target.value},
+        timeout: 5000,
+        async: false,
+        success: (data) => {
+            $('#intervention_elevator_id').find('option').not(':first').remove();
+            for (let i = 0; i < data["elevators"].length; i++) {
+                $('#intervention_elevator_id').append($('<option/>', { key: data["elevators"][i].id, text: data["elevators"][i].id }));
+            }
+        },
+    });
+});
+
+</script>

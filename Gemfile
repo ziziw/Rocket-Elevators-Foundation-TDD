@@ -67,6 +67,9 @@ group :development do
   gem "rvm1-capistrano3", require: false
 end
 
+gem "ed25519", ">= 1.2", "< 2.0"
+gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15"

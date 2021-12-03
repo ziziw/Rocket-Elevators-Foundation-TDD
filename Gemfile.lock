@@ -87,6 +87,7 @@ GEM
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     bcrypt (3.1.16)
+    bcrypt_pbkdf (1.1.0)
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -158,6 +159,7 @@ GEM
     dropbox_api (0.1.20)
       faraday (~> 1.0)
       oauth2 (~> 1.1)
+    ed25519 (1.2.4)
     erubi (1.10.0)
     eventmachine (1.2.7)
     excon (0.88.0)
@@ -479,6 +481,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   arbre
+  bcrypt_pbkdf (>= 1.0, < 2.0)
   bootsnap (>= 1.1.0)
   bootstrap
   byebug
@@ -495,6 +498,7 @@ DEPENDENCIES
   devise
   draper
   dropbox_api
+  ed25519 (>= 1.2, < 2.0)
   excon
   faker
   faraday

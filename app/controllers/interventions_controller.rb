@@ -24,13 +24,9 @@ class InterventionsController < InheritedResources::Base
         puts "intervention saved"
       else
         format.html { redirect_to "/", notice: "intervention was not created" }
-        puts "intervention failed tosave"
+        puts "intervention failed to save"
       end
     end
-
-    # @cur_employee = current_employee
-    # @intervention = Intervention.new(intervention_params)
-    # @intervention.author_id = @cur_employee.id
 
     # if @intervention.save
     #   flash[:notice] = "add new intervention successfull "
@@ -40,6 +36,27 @@ class InterventionsController < InheritedResources::Base
     #   raise StandardError, @intervention.errors.messages
     #   redirect_to action:"new"
     # end
+    @customer = Customer.find(@intervention.customer_id)
+    @employee = Employee.find(@intervention.employee_id)
+
+    ZendeskAPI::Ticket.create!(@client,
+                               :subject => "Intervention for #{@customer.company_name}",
+                               :requester => {
+                                 "name": "#{@cur_employee.first_name} #{@cur_employee.last_name}",
+                                 "email": "#{@cur_employee.email}",
+                               },
+                               :comment => {
+                                 :value => "There is an intervention. \n\n
+          Customer: #{@customer.company_name}\n 
+          Building ID: #{@intervention.building_id}\n 
+          Battery ID: #{@intervention.battery_id}\n
+          Column ID: #{@intervention.column_id}\n
+          Elevator ID: #{@intervention.elevator_id}\n
+          Employee: #{@employee.first_name} #{@employee.last_name}\n
+          Description: #{@intervention.report}\n",
+                               },
+                               :type => "problem",
+                               :priority => "urgent")
   end
 
   def get_buildings

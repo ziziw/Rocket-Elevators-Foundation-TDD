@@ -1,3 +1,3 @@
 class DimCustomer < ApplicationRecord
-    establish_connection :jkg
+  establish_connection :data_warehouse
 end

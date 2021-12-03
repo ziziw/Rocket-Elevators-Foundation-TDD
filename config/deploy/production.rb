@@ -9,7 +9,7 @@ server '99.79.123.96', user: 'ubuntu', roles: %w[app db web]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 app = ENV['APP']
-app = 'JasmineGrewal' if app.nil? || app.empty?
+app = 'ZiWangChen' if app.nil? || app.empty?
 set :application, app
 set :rails_env, 'development'
 set :bundle_without, 'production'

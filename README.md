@@ -6,6 +6,9 @@ http://rickyzchen.com/
 Zendesk URL  
 https://rocketelevatorszi.zendesk.com/agent/
 
+REST API Repo  
+git@github.com:ziziw/Rocket-Elevators-Foundation-REST.git
+
 REST API URL  
 https://rickyzchen.azurewebsites.net/
 

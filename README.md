@@ -1,11 +1,13 @@
-# COMMAND
+ROCKET ELEVATORS FOUNDATION
 
-rake wh:make_table  => drop if exist and create tables in psql database
+Website URL  
+http://rickyzchen.com/
 
-rake wh:populate:* => populate psql tables with data from mysql database 
+Zendesk URL  
+https://rocketelevatorszi.zendesk.com/agent/
 
-* = quote, elevator, contact, customer
+REST API URL  
+https://rickyzchen.azurewebsites.net/
 
-rake wh:reset => Does all the previous rake command in order
-
-rake final:setup  => does rake db:reset and rake final:setup
+Postman URL
+https://go.postman.co/workspace/week8-tutorial~42f4a6c6-f692-45fd-bd6d-ef0aee638484/collection/18480901-12e7255b-49d2-4784-aa3d-85d0d0356f41

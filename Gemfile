@@ -118,3 +118,6 @@ gem 'faraday'
 gem 'sendgrid-ruby'
 gem 'sendgrid-actionmailer', '~> 2.4.0'
 gem 'dropbox_api'
+
+# week 10 TDD
+gem 'rspec'

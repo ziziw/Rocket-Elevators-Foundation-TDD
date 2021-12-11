@@ -121,3 +121,4 @@ gem 'dropbox_api'
 
 # week 10 TDD
 gem 'rspec'
+gem 'rspec-rails'

@@ -5,12 +5,12 @@ include IBMWatson
 class WatsonController < ApplicationController
   def greetings
     authenticator = Authenticators::IamAuthenticator.new(
-      apikey: 'kgFqtBiGs7TEeBjSjLUSo61P9ll8B3n5_V24icg6aChJ'
+      apikey: 'gN7doEbi1hPHXmGiRMUsBGA3K3fB-_l-tgDyRCXq9TOw'
     )
     text_to_speech = TextToSpeechV1.new(
       authenticator: authenticator
     )
-    text_to_speech.service_url = 'https://api.us-east.text-to-speech.watson.cloud.ibm.com/instances/170b203b-7d56-488e-9016-77132e084dcd'
+    text_to_speech.service_url = 'https://api.us-east.text-to-speech.watson.cloud.ibm.com/instances/aa12f8df-5838-42f8-893c-78f20028ba28'
 
     numOFInactive = Elevator.where.not(status:"Online").count
 
@@ -35,7 +35,7 @@ class WatsonController < ApplicationController
 
     def starwars
       authenticator = Authenticators::IamAuthenticator.new(
-        apikey: "kgFqtBiGs7TEeBjSjLUSo61P9ll8B3n5_V24icg6aChJ"
+        apikey: "gN7doEbi1hPHXmGiRMUsBGA3K3fB-_l-tgDyRCXq9TOw"
       )
       text_to_speech = TextToSpeechV1.new(
         authenticator: authenticator

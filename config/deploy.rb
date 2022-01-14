@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-server '167.99.151.92', port: 22, roles: [:web, :app, :db], primary: true
+server '10.116.0.2', port: 22, roles: [:web, :app, :db], primary: true
 
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.16.0'

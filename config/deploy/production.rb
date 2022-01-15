@@ -9,7 +9,7 @@ server '167.99.151.92', user: 'ziwangchen', roles: %w[app db web]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 app = ENV['APP']
-app = 'ZiWangChen' if app.nil? || app.empty?
+app = 'codeboxxDevops' if app.nil? || app.empty?
 set :application, app
 set :rails_env, 'development'
 set :bundle_without, 'production'
